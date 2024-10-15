@@ -4,20 +4,24 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
-import MakeMyTrip_pages.Flight_page;
 import MakeMyTrip_pages.Hotels_page;
-import MakeMyTrip_pages.Login_page;
 
 public class Hotels_TestCase {
-
-	public static void main(String[] args) {
-		WebDriver driver=new ChromeDriver();
+	WebDriver driver;
+	 Hotels_page ht;
+	 
+	 @BeforeMethod
+	public void launchBrowser()  {
+		driver=new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));}
 		
-		Hotels_page ht=new Hotels_page(driver);
-		
+	 @Test
+	public void Hotels_TestCase() {
+	   Hotels_page ht=new Hotels_page(driver);
 		ht.enterURL();
 		ht.SelectHotel();
 
